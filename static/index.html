@@ -1,0 +1,40 @@
+<html>
+<head></head>
+<link rel="stylesheet" href="/gitdb/css/app.css">
+<body>
+{{template "sidebar" $}}
+<div class="content">
+  <h1>{{.Title}}</h1>
+
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>No. of blocks</th>
+      <th>No. of records</th>
+      <th>Size</th>
+      <th>Errors</th>
+      <th>Indexes</th>
+      <th>Last Modified</th>
+    </tr>
+  {{range $key, $value := .DataSets}}
+    <tr>
+      <td><a href="/gitdb/list/{{ $value.Name }}">{{ $value.Name }}</a></td>
+      <td>{{ $value.BlockCount }}</td>
+      <td>{{ $value.RecordCount }}</td>
+      <td>{{ $value.HumanSize }}</td>
+      <td><a href="/gitdb/errors/{{ $value.Name }}">{{ $value.BadBlocksCount }} block(s) / {{ $value.BadRecordsCount }} record(s)</a></td>
+      <td>
+        <ul>
+        {{range $indexName := $value.Indexes}}
+          <li>{{ $indexName }}</li>
+        {{end}}
+        </ul>
+      </td>
+      <td>{{ $value.LastModifiedDate }}</td>
+    </tr>
+  {{end}}
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+<head></head>
+<link rel="stylesheet" href="/gitdb/css/app.css">
+<body>
+
+{{template "sidebar" $}}
+<div class="content">
+  <h1>{{.DataSet.Name}}</h1>
+  <div><span>{{.DataSet.BlockCount}} blocks</span> <span>{{.DataSet.HumanSize}}</span></div>
+
+  <a href="/gitdb/view/{{.DataSet.Name}}/{{.Pager.PrevBlockUri}}">Prev Block</a> | <a href="/gitdb/view/{{.DataSet.Name}}/{{.Pager.NextBlockUri}}">Next Block</a>
+  <pre>
+  {{.Content}}
+  </pre>
+  <a href="/gitdb/view/{{.DataSet.Name}}/{{.Pager.PrevRecordUri}}">Prev Record</a> | <a href="/gitdb/view/{{.DataSet.Name}}/{{.Pager.NextRecordUri}}">Next Record</a>
+</div>
+
+
+</body>
+</html>
