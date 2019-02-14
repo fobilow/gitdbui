@@ -35,7 +35,7 @@ func (g *GUI ) start() {
 	addr := fmt.Sprintf("%s:%d", g.host, g.port)
 	fmt.Println("GitDB GUI will run at http://" + addr)
 
-	err := http.ListenAndServe(":4120", r)
+	err := http.ListenAndServe(addr, r)
 	if err != nil {
 		fmt.Println(err)
 	} else {
